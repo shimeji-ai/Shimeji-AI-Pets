@@ -178,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- AI Chat Settings ---
+  const aiPersonalitySelect = document.getElementById("ai-personality");
   const aiProviderSelect = document.getElementById("ai-provider");
   const aiModelSelect = document.getElementById("ai-model");
   const aiApiKeyInput = document.getElementById("ai-api-key");
@@ -222,8 +223,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load AI settings from storage
   chrome.storage.local.get(
-    ["aiProvider", "aiModel", "aiApiKey", "proactiveMessages"],
+    ["aiPersonality", "aiProvider", "aiModel", "aiApiKey", "proactiveMessages"],
     (data) => {
+      aiPersonalitySelect.value = data.aiPersonality || "cryptid";
+
       const provider = data.aiProvider || "openrouter";
       aiProviderSelect.value = provider;
       populateModelDropdown(provider, data.aiModel);
@@ -237,6 +240,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   );
+
+  // Personality change
+  aiPersonalitySelect.addEventListener("change", () => {
+    chrome.storage.local.set({ aiPersonality: aiPersonalitySelect.value });
+  });
 
   // Provider change
   aiProviderSelect.addEventListener("change", () => {
