@@ -80,7 +80,7 @@ index.js (Vercel) <-> dapp_content_script.js (injected) <-> background.js (exten
 - **Background script:** [background.js](background.js) — handles extension-wide events and wallet connection state.
 - **Content injection & behavior:** [content.js](content.js) (mascot rendering) and [dapp_content_script.js](dapp_content_script.js) (message bridge for Vercel-hosted page).
 - **Popup UI:** [popup.html](popup.html) + [popup.js](popup.js) + [popup.css](popup.css).
-- **Config / test UI:** [config.html](config.html) + [config.js](config.js).
+- **Config / test UI:** [config.html](config.html) + [config.js](config.js) (opens https://chrome-extension-stellar-shimeji-fa.vercel.app/).
 - **Manifest:** [manifest.json](manifest.json) — permissions and content script definitions.
 
 ## Testing tips
